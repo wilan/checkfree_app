@@ -1,0 +1,14 @@
+This is a simple local web application with a React Frontend and Java backend.
+
+To run this, we need to run both servers.
+
+Frontend
+cd my-app
+npm start
+
+Backend
+cd Webserver/bin
+java Server
+
+Then point your browser to:
+http://localhost:3000/
