@@ -1,0 +1,8 @@
+1. Add the UI elements to the react app. This includes a table, the text input, and the two buttons.
+2. Add a new handler on the server. It responds with the list of string (initialize the list to have a few elements).
+3. In the UI, add an onload effect that queries for the list of string and populates a state variable.  The table should now render dynamically based on the list from the server.
+4. Implement the handler for the "Refresh" button.
+5. Add a new handler on the server. It takes the input and appends the string to the list.
+6. Implement the handler for the "Add" button.  Refresh the list on add as well.
+7. Add a new handler on the server. It takes the input for what item in the list to delete and deletes that item.
+8. Implement the handler for the [x] button. Refresh the list on delete as well.
