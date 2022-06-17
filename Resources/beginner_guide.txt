@@ -1,0 +1,20 @@
+We are going to build a simple end to end webapp (frontend and backend).  The purpose of this app is to simply serve a list of string.  We will implement the following:
+* Request for the current list of string
+* Append a new String to the end of the list
+* Delete any item in the list.
+
+The frontend (client) is responsible for requesting the list and displaying it.  It will also have inputs and buttons for the user to interact w/ the list.
+The backend (server) is responsible for storing the list as well as handling the various operations above.
+
+Some interesting properties of this app:
+* We are keeping the data in memory on the server.  That means when the server exits out, we will lose the data. It also means that while the server is running, the data is in tact. Closing the client has no effect on the data.
+* The real data is stored only on the server.  There is only 1 copy and this is the source of truth.  The table you see in the client is merely a "copy" of the data.
+* There can be multiple clients.  You can emulate this by opening new tabs.  When you add an item on both tabs, it should append to the same list.  For example adding "item1" on tab 1 and "item2" on tab 2 should result in showing both items when refreshing either tabs.
+
+Tips
+* Google is your friend, expect to be reading stack overflow A LOT.
+* The frontend automatically reloads the code and does NOT need to be restarted to test a chance.
+* The server needs to be restarted to test a change.
+* To create a new server endpoint, pattern match on ServerTest.java.  Copy and paste that file and register the path in Server.java
+* The data should be stored on the server. This can be simply done by creating an instance variable for example a List of String.
+* You are free and encouraged to put print statements while debugging.  On the frontend, it is console.log("..."), on the server it is System.out.println("...");
