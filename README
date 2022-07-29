@@ -7,9 +7,8 @@ cd my-app
 npm start
 
 Backend
-cd Webserver/bin
-java Server
+cd Webserver
+javac *.java && java Server
 
 Then point your browser to:
 http://localhost:3000/
-##

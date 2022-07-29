@@ -7,8 +7,9 @@ import com.sun.net.httpserver.HttpHandler;
 public class ServerTestHandler implements HttpHandler {
   @Override    
   public void handle(HttpExchange httpExchange) throws IOException {
+    System.out.println(httpExchange.getRequestURI().getQuery());
     if ("GET".equals(httpExchange.getRequestMethod())) {
-      handleResponse(httpExchange); 
+      handleResponse(httpExchange);
     } else {
       throw new UnsupportedOperationException("Only get request are supported");
     }
