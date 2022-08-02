@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import FunctionClick from './FunctionClick';
 
 
 const fetch2 = (path, params = null) => {
@@ -14,19 +15,38 @@ const fetch2 = (path, params = null) => {
   });
 };
 
-const App = () => {
+const App = () => { 
   const [success, setSuccess] = useState(false);
-  
+  /*const [lyricsItem, setLyricsItem] = useState(null);
+  const[loading, setloading] = useState(false);
+
+  const lyricFunction = async () => {
+    try {
+      const data = await axios
+      .get()
+      .then(res => {
+        console.log(res)
+        setLyricsItem(res.data.lyrics);
+      });
+    } catch (e) {
+        console.log(e)
+    }
+  }
+  useEffect(() => {
+    lyricFunction() 
+  }, []); */
   // Checks if the server is running
   useEffect(() => {
-    fetch2("test").then((response) => {
+    fetch2("list").then((response) => {
       const success = response.status === 200 ? true : false;
       setSuccess(success);
+      console.log(response);
     });
   }, []);
 
   return (
     <div className="App">
+      <FunctionClick />
       <table style={{ marginBottom: "20px"}} >
         <thead>
             <tr>
@@ -60,7 +80,7 @@ const App = () => {
       {success ? "Successfully connected to server!" : "Unable to connect to server, is the server running?"}
     </div>
   );
-};
+}
 
 export default App;
 
