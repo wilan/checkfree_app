@@ -1,7 +1,5 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import FunctionClick from './FunctionClick';
-
 
 const fetch2 = (path, params = null) => {
   if (params) {
@@ -16,37 +14,21 @@ const fetch2 = (path, params = null) => {
 };
 
 const App = () => { 
-  const [success, setSuccess] = useState(false);
-  /*const [lyricsItem, setLyricsItem] = useState(null);
-  const[loading, setloading] = useState(false);
 
-  const lyricFunction = async () => {
-    try {
-      const data = await axios
-      .get()
-      .then(res => {
-        console.log(res)
-        setLyricsItem(res.data.lyrics);
-      });
-    } catch (e) {
-        console.log(e)
-    }
-  }
-  useEffect(() => {
-    lyricFunction() 
-  }, []); */
-  // Checks if the server is running
+  const [list, setList] = React.useState([])
+  const [success, setSuccess] = useState(false);
   useEffect(() => {
     fetch2("list").then((response) => {
       const success = response.status === 200 ? true : false;
-      setSuccess(success);
-      console.log(response);
+      setSuccess(success); 
+      const newList = response.body.split("-");
+      setList(newList);
+      <newList key={list.toString()} value={list} />
     });
   }, []);
 
   return (
     <div className="App">
-      <FunctionClick />
       <table style={{ marginBottom: "20px"}} >
         <thead>
             <tr>
@@ -55,21 +37,14 @@ const App = () => {
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Item 1</td>
-                <td><button>X</button></td>
-            </tr>
-            <tr>
-                <td>Item 2</td>
-                <td><button>X</button></td>
-            </tr>
-            <tr>
-                <td>...</td>
-                <td><button>X</button></td>
-            </tr>
+          {list.map((items) => (
+            <><tr>
+              <td>{items}</td>
+              <td><button>X</button></td>
+            </tr></>
+          ))}
         </tbody>
       </table>
-
       <div style= {{ marginBottom : "20px"}} >
         <label>Add Item:</label>
         <input type="text" name="name" />

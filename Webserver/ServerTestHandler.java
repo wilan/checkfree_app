@@ -18,7 +18,6 @@ public class ServerTestHandler implements HttpHandler {
   }
 
   private void handleResponse(HttpExchange httpExchange) throws IOException {
-    byte[] htmlResponse = "hello".getBytes();
     
     List<String> list = Arrays.asList("Pork", "Beef", "Chicken", "Fish");
     String delim = "-";
@@ -44,7 +43,7 @@ public class ServerTestHandler implements HttpHandler {
     httpExchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
     httpExchange.getResponseHeaders().add("Access-Control-Allow-Credentials", "true");
     httpExchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    httpExchange.sendResponseHeaders(200, htmlResponse.length);
+    httpExchange.sendResponseHeaders(200, bytearray.length);
     OutputStream outputStream = httpExchange.getResponseBody();
     outputStream.write(bytearray);
     outputStream.flush();
